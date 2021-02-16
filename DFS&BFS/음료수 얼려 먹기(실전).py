@@ -1,9 +1,15 @@
+n, m = map(int, input().split())
+
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input())))
+
 def dfs(x, y):
     if x < 0 or x >= n or y < 0 or y >= m:
         return False
 
-    if board[x][y] == 0:
-        board[x][y] = 1
+    if graph[x][y] == 0:
+        graph[x][y] = 1
         dfs(x, y + 1) # 오른쪽
         dfs(x - 1, y) # 위쪽
         dfs(x, y - 1) # 왼쪽
@@ -11,10 +17,6 @@ def dfs(x, y):
         return True
     return False
 
-
-n, m = map(int, input().split())
-
-board = [[int(x) for x in input().split()]for _ in range(n)]
 result = 0
 
 for x in range(n):
